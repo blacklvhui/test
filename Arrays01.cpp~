@@ -1,0 +1,18 @@
+#include<iostream>
+
+int main()
+{
+int billy[]={16,2,77,40,12071};
+int n,m;	
+	
+	for(n=0;n<5;n++)
+		{
+		for(m=1;m<5;m++)
+			{if(billy[n]>billy[m])
+				std::cout<<billy[n];
+				std::cout<<'\n';}
+		}
+	
+	
+return 0;
+}
