@@ -1,16 +1,15 @@
 #include<iostream>
 
-int fact(int val)
-{
-	int ret = 1;
-	while (val > 1)
-		ret *= val--;
-	return ret;
-}
 int main()
-{
-	int j = fact (10);
-	std::cout << "10! is " << j << std::endl;
+{	
+	char a[3];
 
-	return 0;
-}	
+	//std::cin >> a;
+
+	a = '0';
+	
+	if (a == "0")
+		std::cout << "zero" ;
+ 
+return 0;
+}

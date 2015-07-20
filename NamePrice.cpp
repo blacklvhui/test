@@ -4,12 +4,21 @@ struct NamePrice
 {
 	char name[20];
 	double price;
-}people[4] = {
-								{"zhang",0},
-								{"zhong",0},
-								{"wei",0},
-								{"lv",0}
-							};
+};
+
+NamePrice InputName()
+{
+	NamePrice a;
+	std::cin >> a.name;
+	a.price = 0;
+	return a;
+} // NamePrice InputName()
+
+int PrintNamePrice(NamePrice a)
+{
+	std::cout << a.name << a.price << std::endl;
+	return 0;
+}
 
 
 int main()
@@ -18,9 +27,30 @@ int main()
 	int PeoNum=0;
 	double Eprice=0;
 	int i=0;
-	char Pname[20];
 	int j=0;
 	int choose;
+
+	NamePrice people[10]={0};
+	
+
+#pragma mark - Add people
+	
+	static int number = 1;
+	do
+	{
+		std::cout << "input 1 to add a people or input 0 to next step" << std::endl ;
+		std::cin >> i;
+		if(0 == i)
+			break;
+		std::cout << "Please input the " << number << " people's name : " << std::endl;
+
+		people[number-1] = InputName();
+
+		number++;
+	} while (1);
+
+
+#pragma mark - Count pirce
 
 	while(1)
 	{	
@@ -33,12 +63,12 @@ int main()
 		if(PeoNum==1)
 		{	
 			std::cout << "Please choose the people :" << "\n";
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < number-1; i++)
 					{
-						std::cout << i << "==>" << people[i].name << std::endl;
+						std::cout << i+1 << "==>" << people[i].name << std::endl;
 					}
 			std::cin >> choose;
-			people[choose].price += Nprice;
+			people[choose-1].price += Nprice;
 
 		}
 		else
@@ -48,32 +78,32 @@ int main()
 			for(j = 0;j < PeoNum;j ++)
 			{
 					std::cout << "Please choose they name :" << std::endl;
-					for (int i = 0; i < 4; i++)
+					for (int i = 0; i < number-1; i++)
 					{
-						std::cout << i << "==>" << people[i].name << std::endl;
+						std::cout << i+1 << "==>" << people[i].name << std::endl;
 					}
 					std::cin >> choose;
-					people[choose].price += Eprice;
+					people[choose-1].price += Eprice;
 			}
 		}
 	}
 
-
-for(i =0 ; i< 4; ++i) 
-{  
- for(j = 0; j < 3-i; ++j) 
+for(i =0 ; i< number-2; ++i) 
 	{  
-    if(people[j].price > people[j+1].price)  
-       {  
-					struct NamePrice temp;
-					temp = people[j];
-					people[j] = people[j+1];
-					people[j+1] = temp;
-       }  
-   }  
-}
+	 for(j = 0; j < number-i-2; ++j) 
+		{  
+ 	   if(people[j].price > people[j+1].price)  
+  	     {  
+						struct NamePrice temp;
+						temp = people[j];
+						people[j] = people[j+1];
+						people[j+1] = temp;
+     	 	 }  
+   	}  
+	}
+
 	
-for(i = 0;i < 4;i ++)
+for(i = 0;i < number-1;i ++)
 	std::cout << people[i].name << ":" << people[i].price << std::endl; 
 
 return 0;
