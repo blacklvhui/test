@@ -35,7 +35,7 @@ int main()
 
 #pragma mark - Add people
 	
-	static int number = 1;
+	int number = 1;
 	do
 	{
 		std::cout << "input 1 to add a people or input 0 to next step" << std::endl ;
